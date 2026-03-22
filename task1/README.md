@@ -1,62 +1,44 @@
-# Домашнее задание №1  
-## CLI-инструмент для получения информации о репозитории GitHub
+# pugovkin
 
----
+> _**pugovkin** is inspired by poking nose into everything_
 
-## Задача
+pugovkin is a simple CLI-tool to get some basic info from public GitHub repositories
 
-Необходимо реализовать простой CLI-инструмент на Go, который получает информацию о репозитории GitHub и выводит её в консоль.
+### Requirements
 
-Инструмент должен:
+- Go (1.25.2)
 
-- принимать параметры репозитория (способ передачи --- на ваше усмотрение),
-- отправлять HTTP-запрос к GitHub,
-- получать JSON-ответ,
-- выводить ключевую информацию в читаемом виде.
+### Install
 
-Репозиторий должен быть обязательно оформлен (хотя бы минимальный README с инструкцией к запуску).
+```sh
+git clone https://github.com/lospollosenjoyer/golang-course.git
+git switch task1
+cd task1
+```
 
----
+### Build
 
-## Минимальная информация, которую необходимо вывести
+```sh
+make build
+```
 
-1. Имя репозитория  
-2. Описание  
-3. Количество звёзд  
-4. Количество форков  
-5. Дата создания  
+### Run
 
----
+```sh
+./pugovkin [-t <timeout in seconds>] [<repo-url> ...]
+```
 
-## Требования
+### Using GitHub fine-grained token
 
-- Использовать только стандартную библиотеку Go.
-- Для сетевых запросов использовать `net/http`.
-- Выводить информацию в читаемом виде.
-- Обработать возможные ошибки:
-  - отсутствие репозитория,
-  - сетевые ошибки,
-  - некорректный ввод.
----
+You may use your own GitHub fine-grained token for greater rate limits and access to private repositories. For that, you should add it as an environment variable `PUGOVKIN_GITHUB_TOKEN`:
 
-## Формат сдачи задания
+```sh
+export PUGOVKIN_GITHUB_TOKEN=<your-token-here>
+./pugovkin ...
+```
 
-Необходимо добавить ревьюеров в collaborators репозитория: `Settings -> Collaborators -> Add people`
-Ревьюеры:
-- https://github.com/suvorovrain
-- https://github.com/Dabzelos
-- https://github.com/vacmannnn
+or just:
 
-Работу над заданием необходимо вести в отдельной ветке.
-
-В конце работы необходимо открыть PR из вашей ветки в main вашего форка и отметить ревьюеров в разделе `Reviewers`.
-
-В PR с выполненным заданием необходимо приложить скриншот работы приложения :).
-
-Рекоммендуется писать адекватное описание коммитов и PR.
-
-
-## Полезные материалы
-
-- Крутая книга для изучения GoLang: Jon Bodner --- Learning Go
-- Необходимая документация API GitHub для выполнения задания: https://docs.github.com/en/rest/repos
+```sh
+PUGOVKIN_GITHUB_TOKEN=<your-token-here> ./pugovkin ...
+```
